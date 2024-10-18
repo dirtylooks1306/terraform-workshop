@@ -1,4 +1,4 @@
-name: "terraform remote backend"
+name: "ex2 terraform remote backend"
 on:
   push:
     branches:
