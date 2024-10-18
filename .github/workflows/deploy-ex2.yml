@@ -47,6 +47,7 @@ jobs:
         env:
           AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
           AWS_BUCKET_KEY_NAME: ${{ secrets.AWS_BUCKET_KEY_NAME }}
+          DYNAMODB_TABLE: ${{ secrets.AWS_DYNAMODB_TABLE }}
         run: |
           terraform init \
             -backend-config="bucket=${AWS_BUCKET_NAME}" \
