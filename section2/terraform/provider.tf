@@ -12,5 +12,5 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   alias  = "default"
-  region = "ap-southeast-1"
+  region = "ap-southeast-1" 
 }

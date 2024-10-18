@@ -11,7 +11,7 @@ permissions:
 env:
   TF_LOG: INFO
   AWS_REGION: ${{ secrets.AWS_REGION }}
-  TF_VAR_STUDENT_ID: ${{ secrets.STUDENT_ID }} # by specifying 
+  TF_VAR_STUDENT_ID: ${{ secrets.STUDENT_ID }} # by specifying this variable, we can use it in the terraform code
 
 jobs:
   undeploy:
@@ -47,4 +47,4 @@ jobs:
             -backend-config="dynamodb_table=${AWS_DYNAMODB_TABLE}"
 
       - name: Terraform Destroy
-        run: TF_LOG=DEBUG terraform destroy -auto-approve
+        run: TF_LOG=DEBUG terraform destroy -auto-approve -var="student_id=${TF_VAR_STUDENT_ID}"
