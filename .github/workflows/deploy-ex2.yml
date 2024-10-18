@@ -1,4 +1,4 @@
-name: "ex2 terraform remote backend"
+name: "terraform remote backend"
 on:
   push:
     branches:
@@ -47,7 +47,6 @@ jobs:
         env:
           AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
           AWS_BUCKET_KEY_NAME: ${{ secrets.AWS_BUCKET_KEY_NAME }}
-          DYNAMODB_TABLE: ${{ secrets.AWS_DYNAMODB_TABLE }}
         run: |
           terraform init \
             -backend-config="bucket=${AWS_BUCKET_NAME}" \
@@ -110,4 +109,4 @@ jobs:
         # only apply upon push to main branch
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve -input=false
+        run: terraform apply -auto-approve -input=false -var "student_id=${TF_VAR_STUDENT_ID}"
